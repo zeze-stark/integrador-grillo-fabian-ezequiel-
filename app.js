@@ -1,7 +1,9 @@
 const express = require('express')
 const cors = require('cors');
 const morgan = require('morgan');
+
 require('ejs');
+require('dotenv').config();
 
 
 const { sequelize } = require('./database');
@@ -10,6 +12,7 @@ sequelize.authenticate()
     .then(() => console.log('Conexión a BD Exitosa'))
     .catch(err => console.log('Error al conectar BD: ', err))
 
+const port = process.env.PORT || 3000;
 const app = express()
 
 // Middlewares
@@ -30,4 +33,4 @@ app.use((req, res, next) => {
 })
 
 
-app.listen(3000, () => console.log("Servidor corriendo en http://localhost:3000"))
+app.listen(port, () => console.log(`Servidor corriendo en http://localhost:${port}`))
