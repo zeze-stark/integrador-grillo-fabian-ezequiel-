@@ -4,6 +4,12 @@ const morgan = require('morgan');
 require('ejs');
 
 
+const { sequelize } = require('./database');
+
+sequelize.authenticate()
+    .then(() => console.log('Conexión a BD Exitosa'))
+    .catch(err => console.log('Error al conectar BD: ', err))
+
 const app = express()
 
 // Middlewares
