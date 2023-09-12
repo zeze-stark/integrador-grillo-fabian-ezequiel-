@@ -7,8 +7,21 @@ const {
     obtenerPublicaciones,
 } = require('../controllers/blog.controllers');
 
+// ====================================================
+//          Rutas para manejar Vistas (views)
+// ====================================================
+router.get('/', (req, res) => {
+    res.render('index')
+})
+
+router.get('/admin', (req, res) => {
+    res.render('admin')
+})
 
 
+// ====================================================
+//              Rutas para manejar Datos
+// ====================================================
 // Ruta para obtener todas las publicaciones
 router.get('/publicaciones/', obtenerPublicaciones);
 
